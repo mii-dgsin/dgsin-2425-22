@@ -8,7 +8,7 @@ const initialCountries = require("./data/initialCountries");
 
 // Configuración base
 const BASE_API = "/api/v1";
-const mdbURL = "mongodb+srv://fracamcas1:kMD6Gt725LK8hQzL@dgsin-2425-22.kbcla6p.mongodb.net/?retryWrites=true&w=majority";
+
 const DB_NAME = "dgsin-2425-22";
 
 // Inicializar Express
