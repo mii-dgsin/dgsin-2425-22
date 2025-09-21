@@ -1,0 +1,81 @@
+h1 {
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px; /* Espacio entre botones */
+  justify-content: center;
+  align-items: center;
+}
+
+.add-button-cell {
+  text-align: center;
+}
+.add-btn {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #4edd71;
+}
+
+.update-btn {
+  background-color: #3498db;
+  border-color: #2980b9;
+  transition: background-color 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #4180b9;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  border-color: #c0392b;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #F9410c;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 2px solid #3498db;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 80%;
+  margin: 50px auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+}
+
+.alert {
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.alert-danger {
+  border: 1px solid #e74c3c;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert-success {
+  border: 1px solid #27ae60;
+  background-color: #d4edda;
+  color: #155724;
+}
+
+
+
+

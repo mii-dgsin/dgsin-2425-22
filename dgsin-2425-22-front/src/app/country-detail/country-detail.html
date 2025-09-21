@@ -1,0 +1,34 @@
+<h1>Update Country</h1>
+
+<div class="card">
+  <table class="table table-bordered table-sm" style="font-size: 0.85em;">
+      <thead class="table-light">
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Debt</th>
+          <th>Debt %</th>
+          <th>Debt/Capita</th>
+          <th>Risk Prism</th>
+          <th>Risk Δ</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ country.name }}</td>
+          <td><input class="form-control form-control-sm" [(ngModel)]="country.date" type="date" /></td>
+          <td><input class="form-control form-control-sm" [(ngModel)]="country.debt" type="number" /></td>
+          <td><input class="form-control form-control-sm" [(ngModel)]="country.debt_percentage" type="number" /></td>
+          <td><input class="form-control form-control-sm" [(ngModel)]="country.debt_per_capita" type="number" /></td>
+          <td><input class="form-control form-control-sm" [(ngModel)]="country.risk_prism" type="number" /></td>
+          <td><input class="form-control form-control-sm" [(ngModel)]="country.annual_risk_variation" type="number" /></td>
+          <td class="action-buttons">
+            <button class="btn btn-sm btn-success save-btn" (click)="saveCountry()">Save</button>
+            <button class="btn btn-sm btn-secondary cancel-btn" (click)="goBack()">Cancel</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
