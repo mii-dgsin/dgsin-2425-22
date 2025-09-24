@@ -1,0 +1,45 @@
+h1 {
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  margin-top: 2%;
+  text-align: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1%;
+  justify-content: center;
+}
+
+.save-btn {
+  background-color: #2ecc71;
+  border-color: #27ae60;
+  color: white;
+  font-weight: bold;
+}
+
+.cancel:hover {
+  background-color: #4edd71;
+}
+
+.cancel-btn{
+  background-color: #e74c3c;
+  border-color: #c0392b;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #F9410c;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 2px solid #3498db;
+  border-radius: 2%;
+  padding: 3%;
+  max-width: 80%;
+  margin: 4% auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+}

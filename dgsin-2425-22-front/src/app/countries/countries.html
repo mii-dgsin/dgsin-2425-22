@@ -1,0 +1,77 @@
+<h1>Countries List</h1>
+
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+</div>
+<div *ngIf="successMessage" class="alert alert-success">
+  {{ successMessage }}
+</div>
+
+<div class="card">
+  <button class="btn btn-primary bn-analytic" [routerLink]="['/analytics']">Go to Analytics</button>
+  <table class="table table-bordered table-sm" style="font-size: 0.85em;">
+    <thead class="table-light">
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Debt</th>
+        <th>Debt %</th>
+        <th>Debt/Capita</th>
+        <th>Risk Prism</th>
+        <th>Risk Δ</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Form row -->
+      <tr>
+        <td><input class="form-control form-control-sm" #newCountryName></td>
+        <td><input class="form-control form-control-sm" #newCountryDate type="date"></td>
+        <td><input class="form-control form-control-sm" #newCountryDebt type="number"></td>
+        <td><input class="form-control form-control-sm" #newCountryDebtPercentage type="number"></td>
+        <td><input class="form-control form-control-sm" #newCountryDebtPerCapita type="number"></td>
+        <td><input class="form-control form-control-sm" #newCountryRiskPrism type="number"></td>
+        <td><input class="form-control form-control-sm" #newCountryAnnualRiskVariation type="number"></td>
+        <td class="add-button-cell">
+          <button class="btn btn-sm add-btn"
+            (click)="addCountry({
+              name: newCountryName.value,
+              date: newCountryDate.value,
+              debt: newCountryDebt.valueAsNumber,
+              debt_percentage: newCountryDebtPercentage.valueAsNumber,
+              debt_per_capita: newCountryDebtPerCapita.valueAsNumber,
+              risk_prism: newCountryRiskPrism.valueAsNumber,
+              annual_risk_variation: newCountryAnnualRiskVariation.valueAsNumber
+            });
+            newCountryName.value = newCountryDate.value = '';
+            newCountryDebt.value = newCountryDebtPercentage.value = '';
+            newCountryDebtPerCapita.value = newCountryRiskPrism.value = newCountryAnnualRiskVariation.value = ''">
+            Add
+          </button>
+        </td>
+      </tr>
+
+      <!-- Data rows -->
+      <tr *ngFor="let country of countries">
+        <td>{{country.name}}</td>
+        <td>{{country.date}}</td>
+        <td>{{country.debt}}</td>
+        <td>{{country.debt_percentage}}</td>
+        <td>{{country.debt_per_capita}}</td>
+        <td>{{country.risk_prism}}</td>
+        <td>{{country.annual_risk_variation}}</td>       
+        <td class="action-buttons">
+          <button class="btn btn-sm btn-primary update-btn" [routerLink]="['/country-detail', country.name]">Update</button>
+          <button class="btn btn-sm btn-danger delete-btn" (click)="deleteCountry(country.name)">Delete</button>
+        </td>
+      </tr>
+
+      <!-- Delete all row -->
+      <tr>
+        <td colspan="8" class="text-end">
+          <button class="btn btn-sm btn-danger" (click)="deleteCountries()">Delete All</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
