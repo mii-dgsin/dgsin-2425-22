@@ -1,9 +1,18 @@
-/// <reference types="@angular/localize" />
+import { bootstrapApplication } from '@angular/platform-browser';
+import { App } from './app/app';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app.routing'; // asegúrate de que exporte Routes
+import { importProvidersFrom } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app-module';
-
-platformBrowser().bootstrapModule(AppModule, {
-  ngZoneEventCoalescing: true,
-})
-  .catch(err => console.error(err));
+bootstrapApplication(App, {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient(withFetch()),
+    provideRouter(routes),
+    importProvidersFrom(NgbModule, FormsModule)
+  ]
+});
