@@ -60,6 +60,13 @@ export class CountryService {
       );
   }
 
+  getProxyCountries(): Observable<any[]> {
+  return this.http.get<any[]>("https://dgsin-2425-22-465611.ew.r.appspot.com/api/v1/proxy-countries")
+    .pipe(
+      catchError(this.handleError<any[]>('getProxyCountries', []))
+    );
+}
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

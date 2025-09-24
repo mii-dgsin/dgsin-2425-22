@@ -1,13 +1,13 @@
 h1 {
   font-family: 'Segoe UI', sans-serif;
   color: #2c3e50;
-  margin-top: 40px;
+  margin-top: 2%;
   text-align: center;
 }
 
 .action-buttons {
   display: flex;
-  gap: 8px;
+  gap: 1%;
   justify-content: center;
 }
 
@@ -18,7 +18,7 @@ h1 {
   font-weight: bold;
 }
 
-.save-btn:hover {
+.cancel:hover {
   background-color: #4edd71;
 }
 
@@ -35,10 +35,10 @@ h1 {
 .card {
   background-color: #ffffff;
   border: 2px solid #3498db;
-  border-radius: 12px;
-  padding: 25px;
+  border-radius: 2%;
+  padding: 3%;
   max-width: 80%;
-  margin: 20px auto;
+  margin: 4% auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', sans-serif;
   color: #2c3e50;

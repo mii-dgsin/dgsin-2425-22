@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule, Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { Country } from '../country';
 import { CountryService } from '../country-service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-country-detail',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './country-detail.html',
-  styleUrl: './country-detail.css'
+  styleUrls: ['./country-detail.css']
 })
 export class CountryDetail implements OnInit {
-
   country: Country;
 
   constructor(
@@ -51,3 +52,4 @@ export class CountryDetail implements OnInit {
     this.location.back();
   }
 }
+

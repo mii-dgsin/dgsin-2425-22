@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { Country } from '../country';
 import { CountryService } from '../country-service';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-countries',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, FormsModule,RouterModule],
   templateUrl: './countries.html',
-  styleUrl: './countries.css'
+  styleUrls: ['./countries.css']
 })
 export class Countries implements OnInit {
   countries: Country[];
   errorMessage: string = '';
   successMessage: string = ''; 
-  constructor(private countryService: CountryService) { }
+
+  constructor(private countryService: CountryService) {}
 
   ngOnInit(): void {
     this.getCountries();
@@ -27,7 +32,6 @@ export class Countries implements OnInit {
   }
 
   addCountry(country: any): void {
-    // Validación de campos vacíos
     if (!country.name || !country.date || !country.debt || 
         !country.debt_percentage || !country.debt_per_capita || 
         !country.risk_prism || !country.annual_risk_variation) {
@@ -40,8 +44,7 @@ export class Countries implements OnInit {
 
     this.countryService.addCountry(country).subscribe(_ => {
       this.getCountries();
-      this.successMessage = '✅ País añadido exitosamente.';
-      // Ocultar mensaje después de unos segundos
+      this.successMessage = 'País añadido exitosamente.';
       setTimeout(() => this.successMessage = '', 3000);
     });
   }
