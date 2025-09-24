@@ -8,7 +8,7 @@ const initialCountries = require("./data/initialCountries");
 
 // Configuración base
 const BASE_API = "/api/v1";
-
+const mdbURL = process.env.MDB_URL;
 const DB_NAME = "dgsin-2425-22";
 
 // Inicializar Express
@@ -32,30 +32,6 @@ MongoClient.connect(mdbURL, { useUnifiedTopology: true })
         db = null;
     });
 
-// GET: Introducir los paises iniciales
-app.get(BASE_API + "/countries/loadInitialData", async (req, res) => {
-  if (!db) {
-    return res.status(503).send("Base de datos no disponible");
-  }
-  try {
-    const count = await db.countDocuments();
-    if (count > 0) {
-      console.info("Datos ya existentes, no se insertan");
-      return res.status(200).send("La base de datos ya contiene datos");
-    }
-    await db.insertMany(initialCountries);
-    console.info("Datos iniciales insertados");
-    res.status(201).send("Datos iniciales insertados correctamente");
-  } catch (err) {
-    console.error("Error en /loadInitialData:", err);
-    res.sendStatus(500);
-  }
-});
-
-// GET: Redirigir al enlace de Postman
-app.get("/api/v1/countries/docs", (req, res) => {
-  res.redirect("https://www.postman.com/avionics-astronaut-7358837/dgsin-2425-22/collection/44o4dmw/rest-api-basics-crud-test-variable?action=share&source=copy-link&creator=46704898");
-});
 
 // GET: Obtener todos los países
 app.get(BASE_API + "/countries", (req, res) => {
@@ -220,6 +196,50 @@ app.put(BASE_API + "/countries/:name", async (req, res) => {
     }
 });
 
+
+// GET: Introducir los paises iniciales
+app.get(BASE_API + "/countries/loadInitialData", async (req, res) => {
+  if (!db) {
+    return res.status(503).send("Base de datos no disponible");
+  }
+  try {
+    const count = await db.countDocuments();
+    if (count > 0) {
+      console.info("Datos ya existentes, no se insertan");
+      return res.status(200).send("La base de datos ya contiene datos");
+    }
+    await db.insertMany(initialCountries);
+    console.info("Datos iniciales insertados");
+    res.status(201).send("Datos iniciales insertados correctamente");
+  } catch (err) {
+    console.error("Error en /loadInitialData:", err);
+    res.sendStatus(500);
+  }
+});
+
+// GET: Redirigir al enlace de Postman
+app.get("/api/v1/countries/docs", (req, res) => {
+  res.redirect("https://www.postman.com/avionics-astronaut-7358837/dgsin-2425-22/collection/44o4dmw/rest-api-basics-crud-test-variable?action=share&source=copy-link&creator=46704898");
+});
+
+
+const axios = require('axios');
+// GET: Obtener datos de API Externa
+app.get(BASE_API + "/proxy-countries", async (req, res) => {
+  try {
+    const externalResponse = await axios.get("https://restcountries.com/v3.1/alpha?codes=USA,JPN,DEU,FRA,ITA,ESP,IND,NOR,MEX,KOR,ARG,SWE&fields=name,cca3,flags,population,region,capital");
+    res.status(200).json(externalResponse.data);
+  } catch (error) {
+    console.error("Error al obtener datos externos:", error.message);
+    res.status(500).send("Error al conectar con la API externa");
+  }
+});
+
+// GET: Redirigir al enlace de video explicatorio
+app.get(BASE_API + "/about-videos", (req, res) => {
+  const videoURL = "https://www.youtube.com/watch?v=tuVideoID";
+  res.redirect(videoURL);
+});
 
 // Iniciar servidor
 const PORT = process.env.PORT || 8080;
