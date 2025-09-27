@@ -42,6 +42,7 @@
           },
           "configurations": {
             "production": {
+              "outputPath": "dist",
               "budgets": [
                 {
                   "type": "initial",
