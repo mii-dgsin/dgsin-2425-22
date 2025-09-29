@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/mii-dgsin/dgsin-2425-22#readme",
   "dependencies": {
+    "axios": "^1.12.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "mongodb": "^6.17.0"

@@ -1,43 +1,9 @@
-// Importar módulos
-const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
-const { MongoClient } = require("mongodb");
-var cors = require('cors');
+/*const express = require("express");
 const initialCountries = require("./data/initialCountries");
-
-// Configuración base
 const BASE_API = "/api/v1";
-const mdbURL = process.env.MDB_URL;
-const DB_NAME = "dgsin-2425-22";
 
-// Inicializar Express
-const app = express();
-app.use("/", express.static(path.join(__dirname, "public")));
-app.use(bodyParser.json());
+module.exports.register = function(app, db) {
 
-app.use(cors());
-
-let db; // Variable global para la colección
-
-// Conexión a MongoDB
-MongoClient.connect(mdbURL, { useUnifiedTopology: true })
-    .then(client => {
-        console.log("Conectado a MongoDB Atlas");
-        const database = client.db(DB_NAME);
-        db = database.collection("countries");
-    })
-    .catch(err => {
-        console.error("Error conectando a la base de datos: ", err);
-        db = null;
-    });
-
-//Esto seria para poder modular este index pero no me funciona. 
-// Habría que borrar todos los metodos de aqui menos el de conexión y descomentar el otro index.js en countriesAPI
-
-    //var countriesAPI = require("./countriesAPI");
-    //countriesAPI.register(app, db);
-    
 // GET: Introducir los paises iniciales
 app.get(BASE_API + "/countries/loadInitialData", async (req, res) => {
   if (!db) {
@@ -60,6 +26,11 @@ app.get(BASE_API + "/countries/loadInitialData", async (req, res) => {
 
 // GET: Redirigir al enlace de Postman
 app.get("/api/v1/countries/docs", (req, res) => {
+  res.redirect("https://www.postman.com/avionics-astronaut-7358837/dgsin-2425-22/collection/44o4dmw/rest-api-basics-crud-test-variable?action=share&source=copy-link&creator=46704898");
+});
+
+// GET: Redirigir al enlace de Postman
+app.get("/about", (req, res) => {
   res.redirect("https://www.postman.com/avionics-astronaut-7358837/dgsin-2425-22/collection/44o4dmw/rest-api-basics-crud-test-variable?action=share&source=copy-link&creator=46704898");
 });
 
@@ -238,13 +209,4 @@ app.get(BASE_API + "/proxy-countries", async (req, res) => {
   }
 });
 
-// Iniciar servidor
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Servidor escuchando en http://localhost:${PORT}`);
-}).on("error", (e) => {
-    console.error("Error al iniciar el servidor:", e);
-}); 
-
-
-
+};*/
